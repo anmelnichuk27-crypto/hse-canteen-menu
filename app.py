@@ -39,7 +39,6 @@ menu = {
     }
 }
 
-# Добавлена пропущенная запятая после 'Лазанья' и учтен салат с моцареллой
 LACTOSE_DISHES = [
     'Оливье', 'Цезарь', 'Солянка', 'Борщ', 'Щи',
     'Картофельное пюре', 'Тыквенный крем-суп', 'Лазанья',
@@ -54,13 +53,11 @@ PRICES = {
     'компоты': 50
 }
 
-# Полный комплекс (4 блюда) - 350 руб., частичный (3 блюда) - 280 руб.
-# (Можешь поменять числа местами, если задумывалось иначе)
 COMPLEX_FULL_PRICE = 350
-COMPLEX_PARTIAL_PRICE = 280
+COMPLEX_PARTIAL_PRICE = 320
 
 
-# ФУНКЦИЯ ДЛЯ ФИЛЬТРАЦИИ БЛЮД ПО ЛАКТОЗЕ
+# Фильтрация блюд по лактозе
 def filter_lactose_dishes(dishes_list, has_intolerance):
     """
     Фильтрует список блюд, исключая те, что содержат лактозу.
@@ -81,7 +78,7 @@ def filter_lactose_dishes(dishes_list, has_intolerance):
     return available_dishes
 
 
-# --- ИНТЕРФЕЙС СТРАНИЦЫ ---
+# Интерфейс страницы
 st.set_page_config(page_title="Столовая НИУ ВШЭ", page_icon="🍽️")
 
 st.title("🍽️ Добро пожаловать в столовую НИУ ВШЭ!")
@@ -153,7 +150,7 @@ for category in categories:
         )
         selected_dishes[category] = available_dishes[chosen_index]
 
-# --- РАСЧЕТ СТОИМОСТИ ---
+# Расчет стоимости
 st.divider()
 st.subheader("🧾 РАСЧЕТ СТОИМОСТИ")
 st.markdown("**Ваш заказ:**")
@@ -192,7 +189,7 @@ else:
             total_price += price
     st.success(f"Итого к оплате: **{total_price} руб.**")
 
-# --- ОПЛАТА ---
+# Оплата
 st.divider()
 st.subheader("💳 ОПЛАТА")
 st.write(f"К оплате: **{total_price} руб.**")
