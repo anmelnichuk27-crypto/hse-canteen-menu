@@ -54,7 +54,7 @@ PRICES = {
 }
 
 COMPLEX_FULL_PRICE = 350
-COMPLEX_PARTIAL_PRICE = 280
+COMPLEX_PARTIAL_PRICE = 320
 
 
 # ФУНКЦИЯ ДЛЯ ФИЛЬТРАЦИИ БЛЮД ПО ЛАКТОЗЕ
