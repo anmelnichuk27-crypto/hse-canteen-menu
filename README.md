@@ -77,3 +77,4 @@ https://docs.streamlit.io/deploy/streamlit-community-cloud,
    ```bash
    streamlit run app.py
    ```
+Подготовили: Глазырина Арина, Мельничук Анастасия, Проскурина Мария; студентки 2 курса ФГГТ НИУ ВШЭ.
