@@ -55,28 +55,22 @@ COMPLEX_FULL_PRICE = 350
 COMPLEX_PARTIAL_PRICE = 320
 
 
-# ФУНКЦИЯ ДЛЯ ФИЛЬТРАЦИИ БЛЮД ПО ЛАКТОЗЕ
 def filter_lactose_dishes(dishes_list, has_intolerance):
     """
     Фильтрует список блюд, исключая те, что содержат лактозу.
     """
     if not has_intolerance:
-        # Если нет непереносимости, возвращаем все блюда
         return dishes_list
 
     available_dishes = []
 
     for dish in dishes_list:
-        # Проверяем, содержит ли блюдо лактозу
         contains_lactose = False
-
-        # Проверяем каждый элемент из списка LACTOSE_DISHES
         for lactose_item in LACTOSE_DISHES:
             if lactose_item in dish:
                 contains_lactose = True
-                break  # Прерываем цикл, если нашли лактозу
+                break  
 
-        # Если блюдо не содержит лактозу, добавляем его в список
         if not contains_lactose:
             available_dishes.append(dish)
 
@@ -207,7 +201,7 @@ if complex_count == 4:
 elif complex_count == 3:
     print("Вы собрали частичный комплексный обед!")
     total_price = COMPLEX_PARTIAL_PRICE
-    # Проверяем, было ли выбрано 4-е блюдо НЕ из комплекса
+    # Проверяем, было ли выбрано 4-е блюдо не из комплекса
     for category, dish in selected_dishes.items():
         if dish and "(комплекс)" not in dish:
             extra_price = PRICES[category]
@@ -215,7 +209,7 @@ elif complex_count == 3:
             total_price += extra_price
     print("Итоговая стоимость:", total_price, "руб.")
 else:
-    # Если в комплексе меньше 3 блюд - считаем все по отдельности
+    # Если в комплексе менее 3 блюд считаем по отдельности
     print("Расчет по отдельности:")
     total_price = 0
     for category, dish in selected_dishes.items():
