@@ -142,7 +142,43 @@ selected_dishes = {
 categories = ['салаты', 'супы', 'вторые', 'компоты']
 
 for category in categories:
-    print("Выберите", category + ":")
+    print("Выберите", category, ":")
+
+    dishes = menu[day][category]
+    available_dishes = filter_lactose_dishes(dishes, has_lactose_intolerance)
+    current_number = 1
+    for dish in available_dishes:
+        if "(комплекс)" in dish:
+            print(current_number, "-", dish)
+        else:
+            print(current_number, "-", dish, "(", PRICES[category], "руб.)")
+
+        current_number += 1
+
+    print("0 - Не выбирать (пропустить категорию)")
+    if not available_dishes:
+        print("В этой категории нет доступных блюд.")
+        selected_dishes[category] = ""
+    else:
+        while True:
+            user_input = input("Номер блюда (или 0 для пропуска): ").strip()
+
+            if user_input.isdigit():
+                choice = int(user_input)
+                if choice == 0:
+                    selected_dishes[category] = ""
+                    print("Категория пропущена.")
+                    break
+                elif 1 <= choice <= len(available_dishes):
+                    selected = available_dishes[choice - 1]
+                    selected_dishes[category] = selected
+                    print("Выбрано:", selected)
+                    break
+                else:
+                    print("Введите число от 0 до", len(available_dishes))
+            else:
+                print("Введите число.")
+    print()
 
     dishes = menu[day][category]
 
