@@ -142,18 +142,12 @@ selected_dishes = {
 categories = ['салаты', 'супы', 'вторые', 'компоты']
 
 for category in categories:
-    print("Выберите", category, ":")
-
+    print("Выберите", category + ":")
     dishes = menu[day][category]
+    
     available_dishes = filter_lactose_dishes(dishes, has_lactose_intolerance)
-    current_number = 1
-    for dish in available_dishes:
-        if "(комплекс)" in dish:
-            print(current_number, "-", dish)
-        else:
-            print(current_number, "-", dish, "(", PRICES[category], "руб.)")
-
-        current_number += 1
+    
+    current_number += 1
 
     print("0 - Не выбирать (пропустить категорию)")
     if not available_dishes:
